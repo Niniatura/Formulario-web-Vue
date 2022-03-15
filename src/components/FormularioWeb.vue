@@ -30,6 +30,7 @@
             ></v-select>
 
             <v-text-field 
+              v-model="password"
               :type="showPassword ? 'text' : 'password'" 
               prepend-icon="mdi-lock" append-icon="mdi-eye-off"
               label="Password"
@@ -40,13 +41,28 @@
             :disabled="!valid"
             color="success"
             class="mr-4"
-            @click="validate"
+            @click="submit"
             >
-            Validate
+            Submit
             </v-btn>
         </v-form>
     </v-card>
+    <table class="table">
+        <thead>
+            <tr>
+            <th scope="col">Campo</th>
+            <th scope="col">Dato Ingresado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="(item) in datosTabla" :key="item">
+                <td>{{datos.nombre}}</td>
+                <td>{{datos.email}}</td>
+            </tr>
+        </tbody>
+    </table>
 </v-app>
+
 </template>
 
 <script>
@@ -82,10 +98,24 @@
     }),
 
     methods: {
-      validate () {
-        this.$refs.form.validate()
+      submit () {
+        if(this.$refs.form.validate()){
+            const datos = JSON.stringify({
+                        Name: this.name,
+                        Email: this.email,
+                        Items: this.select,
+                        Password: this.password
+        })
+        console.log(datos);
+        return datos;
       }
-    },
+    }
+  },
+  computed: {
+      datosForm(){
+          return this.Name
+      }
+  }
   }
 </script>
 
@@ -93,5 +123,12 @@
 .register-form{
   max-width: 75%;
   margin-left: 15% !important;
+}
+.table{
+    width: 50%;
+    align-self: center;
+}
+.table-info{
+    color: darkblue; 
 }
 </style>

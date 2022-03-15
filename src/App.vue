@@ -16,9 +16,5 @@ export default {
   components: {
     FormularioWeb,
   },
-
-  data: () => ({
-    //
-  }),
 };
 </script>
