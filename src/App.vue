@@ -1,27 +1,24 @@
 <template>
-  <div id="app">
-    <formulario-web></formulario-web>
-  </div>
+  <v-app>
+    
+    <v-main>
+      <formulario-web/>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
-import FormularioWeb from './components/FormularioWeb.vue'
+import FormularioWeb from './components/FormularioWeb.vue';
 
 export default {
   name: 'App',
-  components: {
-    FormularioWeb
-  }
-}
-</script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+  components: {
+    FormularioWeb,
+  },
+
+  data: () => ({
+    //
+  }),
+};
+</script>
