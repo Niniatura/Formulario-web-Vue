@@ -50,15 +50,17 @@
     <table class="table">
         <thead>
             <tr>
-            <th scope="col">Campo</th>
-            <th scope="col">Dato Ingresado</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Item</th>
+            <th scope="col">Password</th>
             </tr>
         </thead>
         <tbody>
             <tr v-for="item in datosIngresados" :key="item">
+                <td>{{item.Name}}</td>
                 <td>{{item.Email}}</td>
                 <td>{{item.Items}}</td>
-                <td>{{item.Name}}</td>
                 <td>{{item.Password}}</td>
             </tr>
         </tbody>
@@ -114,9 +116,6 @@
         }
         }
     },
-    computed: {
-
-    }
 }
 
   
