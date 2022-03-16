@@ -8,20 +8,22 @@
         </thead>
         <tbody>
             <tr v-for="(item) in datosTabla" :key="item">
-                <td>{{datos.nombre}}</td>
-                <td>{{datos.email}}</td>
+                <td>{{item.nombre}}</td>
+                <td>{{item.email}}</td>
             </tr>
         </tbody>
     </table>
 </template>
 
 <script>
-    //import FormularioWeb from './FormularioWeb.vue'
+    import datos from './FormularioWeb.vue'
     export default{
         name:'TablaForm',
-        data: () => ({
-           //datos
-        }),
+        data () {
+           return {
+               datos
+           }
+        },
         props:['datosTabla']
     }
 </script>

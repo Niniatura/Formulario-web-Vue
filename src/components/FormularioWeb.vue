@@ -55,9 +55,11 @@
             </tr>
         </thead>
         <tbody>
-            <tr v-for="(item) in datosTabla" :key="item">
-                <td>{{datos.nombre}}</td>
-                <td>{{datos.email}}</td>
+            <tr v-for="item in datosIngresados" :key="item">
+                <td>{{item.Email}}</td>
+                <td>{{item.Items}}</td>
+                <td>{{item.Name}}</td>
+                <td>{{item.Password}}</td>
             </tr>
         </tbody>
     </table>
@@ -70,6 +72,7 @@
     name:'FormularioWeb',
     data: () => ({
       valid: true,
+      datosIngresados:[],
       name: '',
       nameRules: [
         v => !!v || 'Name is required',
@@ -95,28 +98,28 @@
         v => !!v || 'Password is required',
         v => (v && /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(v)) || 'Minimum eight characters, at least one letter and one number'
       ],
+      
     }),
+
 
     methods: {
       submit () {
         if(this.$refs.form.validate()){
-            const datos = JSON.stringify({
+            const datos = {
                         Name: this.name,
                         Email: this.email,
                         Items: this.select,
-                        Password: this.password
-        })
-        console.log(datos);
-        return datos;
-      }
+                        Password: this.password}
+        this.datosIngresados.push(datos)
+        }
+        }
+    },
+    computed: {
+
     }
-  },
-  computed: {
-      datosForm(){
-          return this.Name
-      }
-  }
-  }
+}
+
+  
 </script>
 
 <style scoped>
